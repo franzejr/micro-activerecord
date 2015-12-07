@@ -24,8 +24,8 @@ end
 
 ## Authors
 
-[@franzejr](http://github.com/franzejr)
-[@rafaelsales](https://github.com/rafaelsales)
+- [@franzejr](http://github.com/franzejr)
+- [@rafaelsales](https://github.com/rafaelsales)
 
 
 ## Contributing
