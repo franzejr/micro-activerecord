@@ -1,4 +1,4 @@
-load '../lib/active_record/base.rb'
+load '../lib/micro_active_record/base.rb'
 
 class Person < MicroActiveRecord::CSVAdapter
   columns :name, :age
