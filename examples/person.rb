@@ -3,25 +3,24 @@ load '../lib/active_record/base.rb'
 class Person < MicroActiveRecord::CSVAdapter
   columns :name, :age
 
-	def initialize(*hash)
-		super(*hash)
-	end
+  def initialize(*hash)
+    super(*hash)
+  end
 end
 
-puts "CREATE"
-Person.create(name: "FranzeJr", age: 30)
+puts 'CREATE'
+Person.create(name: 'FranzeJr', age: 30)
 
-puts "WHERE:"
+puts 'WHERE:'
 puts Person.where(name: 'FranzeJr', age: 30)
 
-puts "FIND BY:"
+puts 'FIND BY:'
 puts Person.find_by(name: 'FranzeJr', age: 30)
 
-puts "METHOD ALL"
+puts 'METHOD ALL'
 puts Person.all
 
-
-puts "Testing accessors"
-person  = Person.find_by(name: "FranzeJr")
+puts 'Testing accessors'
+person = Person.find_by(name: 'FranzeJr')
 
 p person

@@ -20,15 +20,14 @@ module MicroActiveRecord
   #
   #
   class CSVAdapter
-
     def initialize(attributes)
       invalid_attributes = attributes.keys - @@columns
-      raise "Invalid attributes: #{invalid_attributes}" if invalid_attributes.any?
+      fail "Invalid attributes: #{invalid_attributes}" if invalid_attributes.any?
       @attributes = attributes
     end
 
     def save
-      CSV.open(self.class.csv_file, "ab", headers: @@columns) do |csv|
+      CSV.open(self.class.csv_file, 'ab', headers: @@columns) do |csv|
         csv << @attributes
       end
     end
@@ -38,7 +37,6 @@ module MicroActiveRecord
     end
 
     class << self
-
       def create(attributes)
         new(attributes).save
       end
@@ -76,20 +74,20 @@ module MicroActiveRecord
 
         column_names.each do |attr|
           define_method(attr) do
-             @attributes[attr]
-           end
+            @attributes[attr]
+          end
 
-        define_method("#{attr}=") do |val|
-           @attributes[attr] = val
-         end
-       end
+          define_method("#{attr}=") do |val|
+            @attributes[attr] = val
+          end
+        end
 
         initialize_db_if_needed
       end
 
       def initialize_db_if_needed
         unless File.exist?(csv_file)
-          CSV.open(csv_file, 'w', headers: @@columns, write_headers: true) { |r| r << []}
+          CSV.open(csv_file, 'w', headers: @@columns, write_headers: true) { |r| r << [] }
         end
       end
     end
