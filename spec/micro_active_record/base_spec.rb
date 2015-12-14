@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe MicroActiveRecord::CSVAdapter do
   let!(:simple_sample) { SimpleSample.create(field1: 'a', field2: '3') }
-  after(:all) { database_clean_if_needed }
+  after(:each) { database_clean_if_needed }
 
   describe '.initialize' do
     it 'fails if invalid attributes are passed' do
@@ -37,7 +37,7 @@ describe MicroActiveRecord::CSVAdapter do
   describe '.find_by' do
     it 'returns a correct instance' do
       simple_sample = SimpleSample.find_by(field1: 'a')
-      expect(simple_sample.is_a?(SimpleSample)).to be_truthy
+      expect(simple_sample).to be_a(SimpleSample)
       expect(simple_sample.field1).to eq 'a'
       expect(simple_sample.field2).to eq '3'
     end
@@ -46,7 +46,7 @@ describe MicroActiveRecord::CSVAdapter do
   describe '.all' do
     it 'retrieves all the instances' do
       SimpleSample.create(field1: 'a', field2: '3')
-      expect(SimpleSample.all.size).to eq 4
+      expect(SimpleSample.all.size).to eq 2
     end
   end
 end
