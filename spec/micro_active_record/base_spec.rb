@@ -37,7 +37,7 @@ describe MicroActiveRecord::CSVAdapter do
   describe '.find_by' do
     it 'returns a correct instance' do
       simple_sample = SimpleSample.find_by(field1: 'a')
-      expect(simple_sample).to be_a(SimpleSample)
+      expect(simple_sample.is_a?(SimpleSample)).to be_truthy
       expect(simple_sample.field1).to eq 'a'
       expect(simple_sample.field2).to eq '3'
     end
